@@ -9,7 +9,7 @@ Feature: El usuario se loguea
     And El usuario clickea el boton "Login"
     Then El usuario verifica que ingreso correctamente a la web
 
-  @Test2
+  @Test
   Scenario: Login fallido por username y password vacios
     Given El usuario se encuentra en la web Automation Practice
     When El usuario clickea el botón "My Account" del menú
