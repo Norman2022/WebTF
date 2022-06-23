@@ -1,17 +1,22 @@
-Feature: El usuario se loguea
 
-  @Test
-  Scenario: El usuario se loguea correctamente con credenciales validas
-    Given El usuario se encuentra en la web Automation Practice
-    When El usuario clickea el botón "My Account" del menú
-    And El usuario ingresa su username "nano@gmail.com"
-    And El usuario ingresa su password "Testing2022*/"
-    And El usuario clickea el boton "Login"
-    Then El usuario verifica que ingreso correctamente a la web
+Feature: Login exitoso y uno fallido
 
-  @Test
-  Scenario: Login fallido por username y password vacios
+Background:
     Given El usuario se encuentra en la web Automation Practice
-    When El usuario clickea el botón "My Account" del menú
-    And El usuario clickea el boton "Login"
-    Then El usuario visualiza mensaje de error en la web
+    When El usuario hace clic en  el Boton "My Account" del menu
+
+
+    Scenario Outline: El usuario no se loguea correctamente por uso de mayusculas
+      And el usuario ingresa username'<username>' y password'<password>' en mayusculas
+      And el usuario presiona el boton Login
+      Then visualiza error por password incorrecto
+    Examples:
+      | username       | password      |
+      | nano@gmail.com | Testing2022/* |
+
+
+    Scenario: El usuario se loguea y desloguea correctamente y vuelve hacia atras
+        And el usuario ingresa username en mayusculas
+        And el usuario presiona el boton Login
+        And el usuario se desloguea y presiona Atras
+        Then el usuario debe ver el formulario de Login
