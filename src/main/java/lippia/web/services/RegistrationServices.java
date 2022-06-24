@@ -24,12 +24,12 @@ public class RegistrationServices extends ActionManager {
 
     public static void clickRegisterBtn() {click(BTN_REGISTER_XPATH);}
 
-    public static void verificarPassNull() {Assert.assertTrue(isVisible(TXT_ERROR_PASSNULL_XPATH ));
+    public static void verificarPassNull() {Assert.assertTrue(isVisible(TXT_ERROR_PASSNULL_XPATH ),"El pass is not Null");
 
         //*****caso 2********
     }
     public static void verificarlInvalidEmail() {
-        Assert.assertTrue(isVisible(TXT_ERROR_EMAIL_XPATH));
+        Assert.assertTrue(isVisible(TXT_ERROR_EMAIL_XPATH),"El email no es valido");
     }
 
 

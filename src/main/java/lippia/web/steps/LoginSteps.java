@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import jdk.internal.net.http.common.Log;
+import lippia.web.constants.AutomationPracticeConstants;
 import lippia.web.services.LoginServices;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -44,7 +45,7 @@ public class LoginSteps extends PageSteps {
     @And("el usuario se desloguea y presiona Atras")
     public void elUsuarioSeDeslogueaYPresionaAtras() {
         LoginServices.logout();
-        LoginServices.clickBtnAtras();
+        LoginServices.irAtras();
     }
 
     @Then("el usuario debe ver el formulario de Login")
@@ -62,12 +63,14 @@ public class LoginSteps extends PageSteps {
 
     @Then("el usuario se loguea exitosamente")
     public void elUsuarioSeLogueaExitosamente() {
-        WebActionManager.isVisible("xpath://a[text()='Dashboard']");
+        LoginServices.seLoguea();
+
     }
 
     @And("el usuario hace clic en {string}")
     public void elUsuarioHaceClicEnAccountDetails(String args0) {
-        WebActionManager.click("xpath://a[text()='Account Details']");
+        LoginServices.clcAccountDetails();
+
     }
 
     @Then("el usuario ve los detalles de su cuenta y puede cambiar su password")

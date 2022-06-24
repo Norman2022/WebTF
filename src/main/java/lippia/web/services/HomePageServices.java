@@ -2,14 +2,8 @@ package lippia.web.services;
 
 import com.crowdar.core.PropertyManager;
 import com.crowdar.core.actions.ActionManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.openqa.selenium.Keys;
-
-import java.io.IOException;
-import java.sql.DriverManager;
-
 import static com.crowdar.core.actions.WebActionManager.navigateTo;
 import static lippia.web.constants.AutomationPracticeConstants.*;
 
@@ -37,7 +31,7 @@ public class HomePageServices extends ActionManager {
        }
     }
     public static void verificarPaginaSig(){
-        Assert.assertTrue(isVisible(ITEM_DESCRIP_XPATH));
+        Assert.assertTrue(isVisible(ITEM_DESCRIP_XPATH), "No se encuntra la descripcion del Libro");
     }
     public static void clickAddToBasket() {
         Assert.assertTrue(isVisible(BTN_ADD_ITEM_XPATH,"No se encuentra el Boton ADD"));
@@ -45,7 +39,7 @@ public class HomePageServices extends ActionManager {
     }
     public static void verificarAddItem(){
 
-                Assert.assertEquals(getAttribute(ITEM_ADD_XPATH,"innerText"),"1 Item"); ;
+                Assert.assertEquals(getAttribute(ITEM_ADD_XPATH,"innerText"),"1 Item","Error al agregar items"); ;
 
     }
     public static void clickViewBasket(){
@@ -54,8 +48,8 @@ public class HomePageServices extends ActionManager {
 
     public static void verSubAndTotal(){
 
-        isVisible(SUBTOTAL_XPATH);
-        isVisible(TOTAL_XPATH);
+        Assert.assertTrue(isVisible(SUBTOTAL_XPATH),"No se ve el Subtotal");
+        Assert.assertTrue(isVisible(TOTAL_XPATH),"No se ve el Total");
     }
     public static void clickChkOutBtn(){
         click(CHKOUT_XPATH);
